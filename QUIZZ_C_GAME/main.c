@@ -62,12 +62,13 @@ int main()
         {
         case ALLEGRO_EVENT_TIMER:
             // game logic goes here.
-            redraw = true;
+            //redraw = true;
             break;
         case ALLEGRO_EVENT_MOUSE_AXES:
             x = event.mouse.x;
             y = event.mouse.y;
             printf(" %d  %d ", x, y);
+            //redraw = true;
             break;
         case ALLEGRO_EVENT_KEY_DOWN:
         case ALLEGRO_EVENT_DISPLAY_CLOSE:
@@ -76,7 +77,7 @@ int main()
         }
         if ((x > 240 && x < 340) && (y > 260 && y < 340)) {
             set0 = set1;
-            //redraw = true;
+            redraw = true;
         }
         else {
             set0 = set2;
@@ -94,10 +95,12 @@ int main()
         if (redraw && al_is_event_queue_empty(queue))
         {
             al_clear_to_color(al_map_rgb(0, 0, 0));
-            al_draw_text(font, al_map_rgb(255, 255, 255), 0, 0, 0, "Ala ma kota");
+            al_draw_text(font, al_map_rgb(255, 255, 255), 0, 0, 0, "kot ");
             al_draw_filled_triangle(35, 350, spin, 375, 35, 400, al_map_rgb_f(0, 1, 0));
             al_draw_filled_rectangle(240, 260, 340, 340, set0);
             al_draw_circle(x, y, 30, al_map_rgb_f(1, 0, 1), 2);
+            al_draw_line(440, 110, 460, 210, al_map_rgb_f(1, 0, 0), 1);
+            al_draw_line(500, 220, 570, 200, al_map_rgb_f(1, 1, 0), 1);
             al_flip_display();
 
             redraw = false;
