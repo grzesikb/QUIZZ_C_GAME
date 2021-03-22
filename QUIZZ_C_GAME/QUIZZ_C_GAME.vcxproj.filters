@@ -26,5 +26,8 @@
     <ClInclude Include="allegro_lib_handler.h">
       <Filter>Source Files</Filter>
     </ClInclude>
+    <ClInclude Include="menu_handler1.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
