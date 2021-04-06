@@ -1,5 +1,16 @@
 
-
+/// <summary>
+/// CHECKS WHAT ELEMENT WAS CLICKED 
+/// </summary>
+/// <param name="mouse_x">POINTER TO MOURSE HORICONTAL POSITION</param>
+/// <param name="mouse_y">POINTER TO MOUSE VERTICAL POSITION</param>
+/// <returns>
+/// SINGLE-PLAYER: 1
+/// MULTIPLE-PLAYER: 2
+/// ADD NEW QUESTION: 3
+/// EXIT: 4
+/// UNDEFINDED: 5
+/// </returns>
 int check_event_click(unsigned int* mouse_x, unsigned int* mouse_y)
 {
 	if (((*mouse_x >= 294) && (*mouse_x <= 782)) && ((*mouse_y >= 395) && (*mouse_y <= 607))) return 1; // jednoosobowy
@@ -7,7 +18,10 @@ int check_event_click(unsigned int* mouse_x, unsigned int* mouse_y)
 	if (((*mouse_x >= 813) && (*mouse_x <= 1129)) && ((*mouse_y >= 396) && (*mouse_y <= 847))) return 3; // dodaj pytanie
 	if (((*mouse_x >= 1159) && (*mouse_x <= 1619)) && ((*mouse_y >= 586) && (*mouse_y <= 847))) return 4; // wyjscie
 }
-
+/// <summary>
+///	MENAGES FORWARDING TO OPTIONS
+/// </summary>
+/// <param name="check_returned">TYPE OF EVENT WHICH WAS CLICKED</param>
 void forwarding(const int check_returned)
 {
 	switch(check_returned)
@@ -26,8 +40,19 @@ void forwarding(const int check_returned)
 	break;
 	}
 }
-
-const int listener(ALLEGRO_TIMER** timer, ALLEGRO_DISPLAY** display, ALLEGRO_EVENT_QUEUE** queue, ALLEGRO_BITMAP** bg, unsigned int* resolution_x, unsigned int* resolution_y, const float* FPS)
+/// <summary>
+/// LISTENS TO MOUSE CLICK EVENT 
+/// </summary>
+/// <param name="timer">POINTER TO TIMER</param>
+/// <param name="display">POINTER TO DISPLAY</param>
+/// <param name="queue">POINTER TO QUEUE</param>
+/// <param name="font">POINTER TO FONT</param>
+/// <param name="bg">POINTER TO BACKGROUND</param>
+/// <param name="resolution_x">POINTER TO HORIZONTAL RESOLUTION</param>
+/// <param name="resolution_y">POINTER TO VERTICAL RESOLUTION</param>
+/// <param name="FPS">POINTER TO FPS FLOAT VALUE</param>
+/// <returns>NOTHING</returns>
+void listener(ALLEGRO_TIMER** timer, ALLEGRO_DISPLAY** display, ALLEGRO_EVENT_QUEUE** queue, ALLEGRO_BITMAP** bg, unsigned int* resolution_x, unsigned int* resolution_y, const float* FPS)
 {
 	ALLEGRO_EVENT event;
 	bool done = false;
@@ -54,7 +79,18 @@ const int listener(ALLEGRO_TIMER** timer, ALLEGRO_DISPLAY** display, ALLEGRO_EVE
 		
 	}
 }
-
+/// <summary>
+/// INICIALIZES MAIN MENU
+/// </summary>
+/// <param name="timer">POINTER TO TIMER</param>
+/// <param name="display">POINTER TO DISPLAY</param>
+/// <param name="queue">POINTER TO QUEUE</param>
+/// <param name="font">POINTER TO FONT</param>
+/// <param name="bg">POINTER TO BACKGROUND</param>
+/// <param name="resolution_x">POINTER TO HORIZONTAL RESOLUTION</param>
+/// <param name="resolution_y">POINTER TO VERTICAL RESOLUTION</param>
+/// <param name="FPS">POINTER TO FPS FLOAT VALUE</param>
+/// <returns>TRUE IF MAIN MENU HAS BEEN INICIALIZED</returns>
 bool init_menu(ALLEGRO_TIMER** timer, ALLEGRO_DISPLAY** display, ALLEGRO_EVENT_QUEUE** queue, ALLEGRO_FONT** font, ALLEGRO_BITMAP** bg, unsigned int* resolution_x, unsigned int* resolution_y, const float* FPS)
 {
 	al_draw_bitmap(*bg, 0, 0, 0);
