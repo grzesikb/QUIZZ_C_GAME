@@ -190,7 +190,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="allegro_lib_handler.h" />
+    <ClInclude Include="data_structures_wizard.h" />
+    <ClInclude Include="init_structures.h" />
+    <ClInclude Include="load_game_file.h" />
     <ClInclude Include="menu_handler1.h" />
+    <ClInclude Include="STATUS.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
