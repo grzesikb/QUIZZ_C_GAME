@@ -16,7 +16,7 @@ char* read_str()
 			num_char++;
 		}while (character != ' ');
 		
-		//if (character == '\n') break;
+		
 		// relocate new memory 
 		char* more = (char*)realloc(string, count + (sizeof(char) * num_char + 1));
 		// cheeks if memory has been allocated 

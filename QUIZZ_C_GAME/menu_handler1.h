@@ -1,11 +1,22 @@
 
 
-int check_event_click(unsigned int* mouse_x, unsigned int* mouse_y)
+int check_event_click(unsigned int* mouse_x, unsigned int* mouse_y, int which_menu)
 {
-	if (((*mouse_x >= 294) && (*mouse_x <= 782)) && ((*mouse_y >= 395) && (*mouse_y <= 607))) return 1; // jednoosobowy
-	if (((*mouse_x >= 294) && (*mouse_x <= 782)) && ((*mouse_y >= 635) && (*mouse_y <= 847))) return 2; // wieloosobowy
-	if (((*mouse_x >= 813) && (*mouse_x <= 1129)) && ((*mouse_y >= 396) && (*mouse_y <= 847))) return 3; // dodaj pytanie
-	if (((*mouse_x >= 1159) && (*mouse_x <= 1619)) && ((*mouse_y >= 586) && (*mouse_y <= 847))) return 4; // wyjscie
+	if (which_menu == 1)
+	{
+		//main menu
+		if (((*mouse_x >= 294) && (*mouse_x <= 782)) && ((*mouse_y >= 395) && (*mouse_y <= 607))) return 1; // jednoosobowy
+		if (((*mouse_x >= 294) && (*mouse_x <= 782)) && ((*mouse_y >= 635) && (*mouse_y <= 847))) return 2; // wieloosobowy
+		if (((*mouse_x >= 813) && (*mouse_x <= 1129)) && ((*mouse_y >= 396) && (*mouse_y <= 847))) return 3; // dodaj pytanie
+		if (((*mouse_x >= 1159) && (*mouse_x <= 1619)) && ((*mouse_y >= 586) && (*mouse_y <= 847))) return 4; // wyjscie
+	}
+	if (which_menu == 2)
+	{	
+		//
+		if (((*mouse_x >= 444) && (*mouse_x <= 1476)) && ((*mouse_y >= 305) && (*mouse_y <= 484))) return 1; // trening
+		if (((*mouse_x >= 444) && (*mouse_x <= 1476)) && ((*mouse_y >= 520) && (*mouse_y <= 699))) return 2;  // 3 zycia
+		if (((*mouse_x >= 444) && (*mouse_x <= 1476)) && ((*mouse_y >= 735) && (*mouse_y <= 914))) return 3; // hardcore
+	}
 }
 
 void forwarding(const int check_returned)
@@ -42,7 +53,7 @@ const int listener(ALLEGRO_TIMER** timer, ALLEGRO_DISPLAY** display, ALLEGRO_EVE
 		case ALLEGRO_EVENT_MOUSE_BUTTON_UP:
 			mouse_x = event.mouse.x;
 			mouse_y = event.mouse.y;
-			must_init(check_returned=check_event_click(&mouse_x, &mouse_y), "check position");
+			must_init(check_returned=check_event_click(&mouse_x, &mouse_y, 1), "check position");
 			forwarding(check_returned);
 			break;
 		case ALLEGRO_EVENT_DISPLAY_CLOSE:

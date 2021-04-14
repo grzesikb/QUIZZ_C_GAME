@@ -108,6 +108,7 @@ void write_to_file()
 {
 	int struct_size;
 
+	fwrite(&tmp_question.id, sizeof(int), 1, file);
 	
 	struct_size = get_str_len(tmp_question.question);
 	fwrite(&struct_size, sizeof(int), 1, file);
@@ -138,6 +139,8 @@ void read_from_file()
 	int struct_size=0;
 	while (fread(&struct_size, sizeof(int), 1, file))
 	{
+		fread(tmp_question.question, struct_size, 1, file);
+		printf("%d\n", tmp_question.id);
 		
 		tmp_question.question = (char*)malloc(struct_size * sizeof(char));
 		fread(tmp_question.question, struct_size, 1, file);
@@ -168,6 +171,7 @@ void read_from_file()
 		fread(tmp_question.correct, 1, 1, file);
 		printf("%c\n", tmp_question.correct[0]);
 		printf("\n");
+		
 	}
 }
 void free_all_allocated_strings()
