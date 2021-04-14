@@ -6,9 +6,6 @@ char* read_str()
 	char character = ' ';
 	char* string=(char*)malloc(1);
 	
-	
-	
-	
 	while (character != '\n')
 	{
 		// gets char from stdin

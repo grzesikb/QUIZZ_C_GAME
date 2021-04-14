@@ -31,24 +31,6 @@ typedef struct questions_tmp** ref_questions_tmp;
 
 struct questions_tmp tmp_question;
 
-struct questions_tmp_to_write
-{
-	int id;
-	char question;
-	char answer_a;
-	char answer_b;
-	char answer_c;
-	char answer_d;
-	char correct;
-};
-
-typedef struct questions_tmp_to_write* p_questions_tmp_to_write;
-typedef struct questions_tmp_to_write** ref_questions_tmp_to_write;
-
-
-struct questions_tmp_to_write qt_w;
-
-
 
 void load_mem_for_questions_ptrs()
 {
@@ -74,3 +56,4 @@ void kill_mem_for_questions_ptrs()
 	free(tmp_question.correct);
 	tmp_question.correct = NULL;
 }
+

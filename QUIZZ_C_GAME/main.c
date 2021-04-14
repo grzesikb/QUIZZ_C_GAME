@@ -12,7 +12,6 @@ const float FPS = 30.0;
 const int no_option = 3;
 unsigned int resolution_x = 1920;
 unsigned int resolution_y = 1080;
-
 // ____FUNCTION SECTION____ //
 
 
