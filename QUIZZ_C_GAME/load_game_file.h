@@ -4,8 +4,10 @@ FILE* file;
 
 void scan_file();
 void add_questions();
-
+void get_quest_from_usr();
 void write_to_file();
+void read_from_file();
+
 void load_saved_info()
 {
 	file = fopen("database.bin", "wb+");
@@ -20,55 +22,45 @@ void scan_file()
 		"If file is empty");
 	if(status)
 	{
-		//read_questions();
+		read_from_file();
+		fclose(file);
 	}
 	else 
 	{
 		add_questions();
+		fclose(file);
 	}
 }
 
-void write_to_file()
+void get_quest_from_usr()
 {
-	char str[50];
-	int num_char = 0, i=0,j=0, count=0;
-	char holder='s';
-	char* string;
-	getchar();
-	printf("Wprowadz pytanie:");
-	while(holder!='\n')
-	{
-		holder = 's';
-		while (holder != ' ') {
-			count++;
-			if ((holder = getchar()) == '\n') break;
-			str[num_char] = holder;
-			num_char++;
-		}
-		if (holder == '\n') break;
-		char* more = (char*)realloc(tmp_question.question, count+(sizeof(char)*num_char));
-		must_init_exit(more, "mem relocation for string");
-		tmp_question.question = more;
-		while (num_char) {
-			tmp_question.question[i] = str[j];
-			tmp_question.question[i+1] = '\0';
-			
-			i++;
-			j++;
-			num_char--;
-		}
-		j = 0;
-		num_char = 0;
-	}
-	printf("%s", tmp_question.question);
+	
+	// clears stdin buffer from \n char which has left 
+	fseek(stdin, 0, SEEK_END);
+	
+	printf("Wprowadz pytanie: ");
+	tmp_question.question = read_str();
 
+	printf("%s\n", tmp_question.question);
 
-	printf("Podaj poprawna odpowiedz \n");
+	printf("Wprowadz odpowiedz A: ");
+	tmp_question.answer_a = read_str();
+	printf("%s\n", tmp_question.answer_a);
+
+	printf("Wprowadz odpowiedz B: ");
+	tmp_question.answer_b = read_str();
+	printf("%s\n", tmp_question.answer_b);
+
+	printf("Wprowadz odpowiedz C: ");
+	tmp_question.answer_c = read_str();
+	printf("%s\n", tmp_question.answer_c);
+
+	printf("Wprowadz odpowiedz D: ");
+	tmp_question.answer_d = read_str();
+	printf("%s\n", tmp_question.answer_d);
+
+	printf("Wprowadz oznaczenie poprawnej odpowiedzi: ");
 	scanf("%c", tmp_question.correct);
-
-	must_init_get_info(fwrite(&tmp_question,
-		sizeof(struct questions_tmp), 1, file),
-		"If written correctly");
 }
 
 void add_questions()
@@ -79,9 +71,27 @@ void add_questions()
 	while(questions_number)
 	{
 		load_mem_for_questions_ptrs();
+		get_quest_from_usr();
 		write_to_file();
 		questions_number--;
 	}
 }
 
 
+void write_to_file()
+{
+	fwrite(&qt_w, sizeof(tmp_question), 1, file);
+}
+void read_from_file()
+{
+	while (fread(&tmp_question, sizeof(tmp_question), 1, file))
+	{
+		printf("%s\n", tmp_question.question);
+		printf("%s\n", tmp_question.answer_a);
+		printf("%s\n", tmp_question.answer_b);
+		printf("%s\n", tmp_question.answer_c);
+		printf("%s\n", tmp_question.answer_d);
+		printf("%s\n", tmp_question.correct);
+		printf("\n");
+	}
+}

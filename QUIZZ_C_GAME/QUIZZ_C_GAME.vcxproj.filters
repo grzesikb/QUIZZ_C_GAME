@@ -41,5 +41,8 @@
     <ClInclude Include="STATUS.h">
       <Filter>Source Files</Filter>
     </ClInclude>
+    <ClInclude Include="strings.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

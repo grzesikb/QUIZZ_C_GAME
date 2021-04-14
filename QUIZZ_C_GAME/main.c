@@ -1,5 +1,6 @@
 #include "STATUS.h"
 #include "init_structures.h"
+#include "strings.h"
 #include "data_structures_wizard.h"
 #include "load_game_file.h"
 #include "allegro_lib_handler.h"
@@ -28,10 +29,10 @@ int main() {
     load_saved_info();
     scan_file();
 	//init_menu(&timer, &display, &queue, &font, &background, &resolution_x, &resolution_y, &FPS);
-    al_rest(15.0);
+    /*al_rest(15.0);
     al_destroy_font(font);
     al_destroy_display(display);
     al_destroy_timer(timer);
-    al_destroy_event_queue(queue);
+    al_destroy_event_queue(queue);*/
     return 0;
 }

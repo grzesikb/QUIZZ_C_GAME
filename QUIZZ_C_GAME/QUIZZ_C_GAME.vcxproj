@@ -195,6 +195,7 @@
     <ClInclude Include="load_game_file.h" />
     <ClInclude Include="menu_handler1.h" />
     <ClInclude Include="STATUS.h" />
+    <ClInclude Include="strings.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
